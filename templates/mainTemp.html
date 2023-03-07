@@ -310,9 +310,17 @@
         </table>
         <input type="submit">
         <h1 id="error"></h1>
+        <h2 id="solve"></h2>
     </form>
 </div>
  <script>
+    var solved = {{ solved }};
+
+    var solveH = document.getElementById("solve");
+    if (solved === 1) {
+        solveH.innerHTML = "You have solved the puzzle!";
+    }
+
     var badOnes = {{badCells}};
     for (i = 0; i < badOnes.length; i++) {
         badOnes[i] = "cell-" + badOnes[i]

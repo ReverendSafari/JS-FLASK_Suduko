@@ -22,20 +22,16 @@ def handle_data():
     for i in range(len(right_answers)):
         rightToString.append(str(right_answers[i]))
 
-
-
     for key in dict:
         suduko_numbers.append(dict[key])
 
     for i in range(len(right_answers)):
-        #print("Testing sn - " + suduko_numbers[i] + " - rs - " + rightToString[i])
         if (suduko_numbers[i] != "" and suduko_numbers[i] != rightToString[i]):
             badCells.append(i)
-    #print(badCells)
-    #print(suduko_numbers)
-    #print(rightToString)
-    print(json.dumps(badCells))
-    return render_template('mainTemp.html', values=suduko_numbers, badCells=badCells)
+    solved = 0
+    if suduko_numbers == rightToString:
+        solved = 1
+    return render_template('mainTemp.html', values=suduko_numbers, badCells=badCells, solved=solved)
 
 
 
